@@ -68,12 +68,15 @@ const getCourses = async (req, res, next) => {
         }
 
         //sort by price lowest or highest
-        if (price.toLowerCase() === 'lowest') {
-            sorting = { 'price': 1 }
+        if (price) {
+            if (price.toLowerCase() === 'lowest') {
+                sorting = { 'price': 1 }
+            }
+            if (price.toLowerCase() === 'highest') {
+                sorting = { 'price': -1 }
+            }
         }
-        if (price.toLowerCase() === 'highest') {
-            sorting = { 'price': -1 }
-        }
+
 
         const courses = await Course.aggregate([
             {

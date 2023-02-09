@@ -33,9 +33,6 @@ admin.post('/login', adminController.login)
 admin.get('/logout', adminController.logout)
 admin.post('/register', adminController.register)
 
-// admin.get('/admin', adminController.getAdmin)
-// admin.delete('/admin/:id', adminController.deleteAdmin)
-
 //crud category
 admin.get('/category', auth, adminAuth, categoryController.getCategory)
 admin.post('/category', auth, adminAuth, categoryController.createCategory)

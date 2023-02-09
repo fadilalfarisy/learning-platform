@@ -151,9 +151,12 @@ const logout = async (req, res, next) => {
     try {
         //clear cookie refresh token
         res.clearCookie('refresh', { path: '/' })
-        res.status(204).json({
-            code: 204,
-            status: 'NO_CONTENT'
+        res.status(200).json({
+            code: 200,
+            status: 'OK',
+            data: {
+                message: 'success logout'
+            }
         })
     } catch (error) {
         next(error)

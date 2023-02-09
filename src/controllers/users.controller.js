@@ -162,7 +162,7 @@ const logout = async (req, res, next) => {
 
 const getUsers = async (req, res, next) => {
     try {
-        const users = await User.find()
+        const users = await User.find({ role: 'user' })
         res.status(200).json({
             code: 200,
             status: 'OK',

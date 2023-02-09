@@ -1,5 +1,5 @@
 import express from "express"
-import { auth, adminAuth } from "../middleware/auth.js"
+import { auth } from "../middleware/auth.js"
 import usersController from '../controllers/users.controller.js'
 import coursesController from "../controllers/courses.controller.js"
 import categoryController from "../controllers/category.controller.js"
@@ -11,12 +11,12 @@ user.get('/logout', usersController.logout)
 user.post('/register', usersController.register)
 
 //category
-user.get('/course/category', categoryController.getCategory)
-user.get('/course/category/popular', coursesController.getPopularCategory)
+user.get('/course/category', auth, categoryController.getCategory)
+user.get('/course/category/popular', auth, coursesController.getPopularCategory)
 
 //course
-user.get('/courses', coursesController.getCourses)
-user.get('/course/:id', coursesController.getCourseById)
+user.get('/courses', auth, coursesController.getCourses)
+user.get('/course/:id', auth, coursesController.getCourseById)
 
 
 export default user

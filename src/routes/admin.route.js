@@ -37,23 +37,23 @@ admin.post('/register', adminController.register)
 // admin.delete('/admin/:id', adminController.deleteAdmin)
 
 //crud category
-admin.get('/category', categoryController.getCategory)
-admin.post('/category', categoryController.createCategory)
-admin.put('/category/:id', categoryController.updateCategory)
-admin.delete('/category/:id', categoryController.deleteCategory)
+admin.get('/category', auth, adminAuth, categoryController.getCategory)
+admin.post('/category', auth, adminAuth, categoryController.createCategory)
+admin.put('/category/:id', auth, adminAuth, categoryController.updateCategory)
+admin.delete('/category/:id', auth, adminAuth, categoryController.deleteCategory)
 
 //crud courses
-admin.get('/courses', coursesController.getCourses)
-admin.get('/course/:id', coursesController.getCourseById)
-admin.post('/course', upload.single('course_image'), coursesController.createCourse)
-admin.put('/course/:id', upload.single('course_image'), coursesController.updateCourse)
-admin.delete('/course/:id', coursesController.deleteCourse)
+admin.get('/courses', auth, adminAuth, coursesController.getCourses)
+admin.get('/course/:id', auth, adminAuth, coursesController.getCourseById)
+admin.post('/course', auth, adminAuth, upload.single('course_image'), coursesController.createCourse)
+admin.put('/course/:id', auth, adminAuth, upload.single('course_image'), coursesController.updateCourse)
+admin.delete('/course/:id', auth, adminAuth, coursesController.deleteCourse)
 
 //crud users
-admin.get('/users', usersController.getUsers)
-admin.delete('/user/:id', usersController.deleteUser)
+admin.get('/users', auth, adminAuth, usersController.getUsers)
+admin.delete('/user/:id', auth, adminAuth, usersController.deleteUser)
 
 //statistics
-admin.get('/statistics', adminController.getStatistics)
+admin.get('/statistics', auth, adminAuth, adminController.getStatistics)
 
 export default admin

@@ -6,8 +6,8 @@ const checkRefreshToken = async (req, res, next) => {
 
         //when not sent cookie refresh token
         if (!refresh) {
-            return res.status(400).json({
-                code: 400,
+            return res.status(403).json({
+                code: 403,
                 status: 'FORBIDDEN',
                 errors: {
                     cookies: 'cookie is null'
@@ -16,8 +16,8 @@ const checkRefreshToken = async (req, res, next) => {
         }
         verifyRefreshToken(refresh, (error, decoded) => {
             if (error) {
-                return res.status(401).json({
-                    code: 400,
+                return res.status(403).json({
+                    code: 403,
                     status: 'FORBIDDEN',
                     errors: {
                         token: 'invalid token'

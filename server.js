@@ -29,6 +29,15 @@ app.use(bodyParser.json()) //allow request with format json
 
 //api
 app.use('/api', router)
+app.get('/', (req, res) => {
+    res.status(200).json({
+        code: 200,
+        status: 'OK',
+        data: {
+            message: 'server running'
+        }
+    })
+})
 app.get('*', (req, res) => {
     res.status(404).json({
         code: 404,
